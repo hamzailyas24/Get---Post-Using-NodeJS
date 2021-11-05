@@ -53,6 +53,32 @@ app.get("/user/:id", (req, res) => {
   }
 });
 
+app.put("/user/:id", (req, res) => {
+  if (users[req.params.id]) {
+    if (req.body.name) {
+      users[req.params.id].name = req.body.name;
+    }
+    if (req.body.name) {
+      users[req.params.id].email = req.body.email;
+    }
+    if (req.body.name) {
+      users[req.params.id].email = req.body.email;
+    }
+    res.send(users[req.params.id]);
+  } else {
+    res.send("User Not Found");
+  }
+});
+
+app.delete("/user/:id", (req, res) => {
+  if (users[req.params.id]) {
+    users[req.params.id] = {};
+    res.send("User Deleted");
+  } else {
+    res.send("User Not Found");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server Started On Port ${port}`);
 });
