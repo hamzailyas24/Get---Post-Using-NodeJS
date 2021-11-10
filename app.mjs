@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
-import cors from "cors";
 import mongoose from 'mongoose';
+import cors from "cors";
 
 mongoose.connect('mongodb+srv://hamzailyas:db1234@cluster0.8m2bm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 
