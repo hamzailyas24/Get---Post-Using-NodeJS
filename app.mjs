@@ -1,17 +1,14 @@
-import express from "express";
-import morgan from "morgan";
+import express from 'express';
+import morgan from 'morgan';
 import cors from "cors";
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const DB =
-  "mongodb+srv://hamzailyas:db1234@cluster0.8m2bm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+mongoose.connect('mongodb+srv://hamzailyas:db1234@cluster0.8m2bm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 
-mongoose.connect(DB);
-
-const User = mongoose.model("User", {
+const User = mongoose.model('User', {
   name: String,
   email: String,
-  address: String,
+  address: String
 });
 
 const app = express()
@@ -38,6 +35,7 @@ app.get('/users', (req, res) => {
 
 
 })
+
 app.get('/user/:id', (req, res) => {
 
   User.findOne({ _id: req.params.id }, (err, user) => {
@@ -49,6 +47,7 @@ app.get('/user/:id', (req, res) => {
   })
 
 })
+
 app.post('/user', (req, res) => {
 
   if (!req.body.name || !req.body.email || !req.body.address) {
@@ -65,6 +64,7 @@ app.post('/user', (req, res) => {
     });
   }
 })
+
 app.put('/user/:id', (req, res) => {
   let updateObj = {}
 
@@ -87,6 +87,7 @@ app.put('/user/:id', (req, res) => {
       }
     })
 })
+
 app.delete('/user/:id', (req, res) => {
 
   User.findByIdAndRemove(req.params.id, (err, data) => {
@@ -98,6 +99,9 @@ app.delete('/user/:id', (req, res) => {
   })
 })
 
+app.get('/home', (req, res) => {
+  res.send('here is your home')
+})
 app.get('/', (req, res) => {
   res.send('Hi I am a hello world Server program')
 })
