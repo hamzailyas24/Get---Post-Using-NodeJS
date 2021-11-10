@@ -6,6 +6,8 @@ import mongoose from "mongoose";
 const DB =
   "mongodb+srv://hamzailyas:db1234@cluster0.8m2bm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
+  mongoose.connect(DB)
+
 const User = mongoose.model("User", {
   name: String,
   email: String,
